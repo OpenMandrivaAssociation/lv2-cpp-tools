@@ -5,7 +5,7 @@
 Summary:	A LV2 Development SDK
 Name:		lv2-c++-tools
 Version:	1.0.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv3+
 Group:		Sound
 URL:		http://ll-plugins.nongnu.org/hacking.html
@@ -60,10 +60,10 @@ perl -pi -e "s|/lib\b|/%{_lib}|g" Makefile.template
 %install
 rm -rf %{buildroot}
 
-make install \
-    prefix=%{buildroot}%{_prefix} \
-    libdir=%{buildroot}%{_libdir} \
-    pkgdocdir=%{buildroot}%{_docdir}/%{name}
+%makeinstall_std \
+    prefix=%{_prefix} \
+    libdir=%{_libdir} \
+    pkgdocdir=%{_docdir}/%{name}
 
 %if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
@@ -93,4 +93,3 @@ rm -rf %{buildroot}
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-
