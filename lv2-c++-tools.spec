@@ -5,7 +5,7 @@
 Summary:	A LV2 Development SDK
 Name:		lv2-c++-tools
 Version:	1.0.2
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv3+
 Group:		Sound
 URL:		http://ll-plugins.nongnu.org/hacking.html
