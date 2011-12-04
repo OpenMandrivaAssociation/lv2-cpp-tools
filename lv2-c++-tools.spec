@@ -4,8 +4,8 @@
 
 Summary:	A LV2 Development SDK
 Name:		lv2-c++-tools
-Version:	1.0.2
-Release:	%mkrel 4
+Version:	1.0.4
+Release:	1
 License:	GPLv3+
 Group:		Sound
 URL:		http://ll-plugins.nongnu.org/hacking.html
@@ -64,14 +64,6 @@ rm -rf %{buildroot}
     prefix=%{_prefix} \
     libdir=%{_libdir} \
     pkgdocdir=%{_docdir}/%{name}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %clean
 rm -rf %{buildroot}
