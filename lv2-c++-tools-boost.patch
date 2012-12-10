@@ -1,0 +1,42 @@
+diff -rupN lv2-c++-tools-1.0.3.old/libraries/paq/turtleparser.cpp lv2-c++-tools-1.0.3/libraries/paq/turtleparser.cpp
+--- lv2-c++-tools-1.0.3.old/libraries/paq/turtleparser.cpp	2010-01-07 09:19:06.000000000 -0500
++++ lv2-c++-tools-1.0.3/libraries/paq/turtleparser.cpp	2010-01-30 19:15:50.000000000 -0500
+@@ -28,7 +28,7 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
+-#include <boost/spirit/dynamic.hpp>
++#include <boost/spirit/include/classic_dynamic.hpp>
+ 
+ #include "turtleparser.hpp"
+ 
+diff -rupN lv2-c++-tools-1.0.3.old/libraries/paq/turtleparser.hpp lv2-c++-tools-1.0.3/libraries/paq/turtleparser.hpp
+--- lv2-c++-tools-1.0.3.old/libraries/paq/turtleparser.hpp	2010-01-07 09:19:06.000000000 -0500
++++ lv2-c++-tools-1.0.3/libraries/paq/turtleparser.hpp	2010-01-30 19:15:50.000000000 -0500
+@@ -23,10 +23,10 @@
+ #ifndef TURTLEPARSER_HPP
+ #define TURTLEPARSER_HPP
+ 
+-#include <boost/spirit/core.hpp>
+-#include <boost/spirit/utility.hpp>
+-#include <boost/spirit/tree/parse_tree.hpp>
+-#include <boost/spirit/tree/ast.hpp>
++#include <boost/spirit/include/classic_core.hpp>
++#include <boost/spirit/include/classic_utility.hpp>
++#include <boost/spirit/include/classic_parse_tree.hpp>
++#include <boost/spirit/include/classic_ast.hpp>
+ 
+ #include <algorithm>
+ #include <iostream>
+diff -rupN lv2-c++-tools-1.0.3.old/libraries/paq/unicode.hpp lv2-c++-tools-1.0.3/libraries/paq/unicode.hpp
+--- lv2-c++-tools-1.0.3.old/libraries/paq/unicode.hpp	2010-01-07 09:19:06.000000000 -0500
++++ lv2-c++-tools-1.0.3/libraries/paq/unicode.hpp	2010-01-30 19:15:50.000000000 -0500
+@@ -29,7 +29,7 @@
+ 
+ 
+ using namespace std;
+-using namespace boost::spirit;
++using namespace boost::spirit::classic;
+ 
+ 
+ template <typename ScannerT>

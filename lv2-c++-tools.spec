@@ -10,10 +10,9 @@ License:	GPLv3+
 Group:		Sound
 URL:		http://ll-plugins.nongnu.org/hacking.html
 Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{version}.tar.bz2
+Patch0:		lv2-c++-tools-boost.patch
 BuildRequires:	boost-devel
-BuildRequires:	gtkmm2.4-devel >= 2.6.0
-BuildRequires:	pkgconfig
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	pkgconfig(gtkmm-2.4)
 
 %description
 This software package contains libraries and programs that should make it
@@ -28,9 +27,9 @@ This package contains the library needed to run programs dynamically
 linked with the %{name} library.
 
 %package -n	%{develname}
-Summary:	Development headers and libraries for %{oname}
+Summary:	Development headers and libraries for %{name}
 Group:		Development/C
-Requires:	%{libname} = %{version}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n	%{develname}
@@ -38,8 +37,8 @@ This package contains the header files and libraries needed for
 developing programs using the %{name} library.
 
 %prep
-
-%setup -q -n %{name}-%{version}
+%setup -q
+%patch0 -p1
 
 # don't invoke ldconfig
 perl -pi -e "s|/sbin/ldconfig -n |/bin/true |g" Makefile.template
@@ -48,7 +47,6 @@ perl -pi -e "s|/sbin/ldconfig -n |/bin/true |g" Makefile.template
 perl -pi -e "s|/lib\b|/%{_lib}|g" Makefile.template
 
 %build
-
 ./configure \
     --prefix=%{_prefix} \
     --libdir=%{_libdir}
@@ -58,30 +56,23 @@ perl -pi -e "s|/lib\b|/%{_lib}|g" Makefile.template
     libdir=%{_libdir}
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std \
     prefix=%{_prefix} \
     libdir=%{_libdir} \
     pkgdocdir=%{_docdir}/%{name}
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}
 %{_bindir}/lv2peg
 %{_bindir}/lv2soname
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %dir %{_includedir}/%{name}
 %{_includedir}/%{name}/*
 %{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+
