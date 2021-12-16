@@ -10,7 +10,6 @@ License:	GPLv3+
 Group:		Sound
 URL:		http://ll-plugins.nongnu.org/hacking.html
 Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{version}.tar.bz2
-Patch0:		lv2-c++-tools-boost.patch
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(gtkmm-2.4)
 
@@ -38,7 +37,6 @@ developing programs using the %{name} library.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # don't invoke ldconfig
 perl -pi -e "s|/sbin/ldconfig -n |/bin/true |g" Makefile.template
