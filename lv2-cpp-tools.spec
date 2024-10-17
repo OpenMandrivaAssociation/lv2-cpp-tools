@@ -8,7 +8,7 @@ Version:	1.0.7
 Release:	1
 License:	GPLv3+
 Group:		Sound
-URL:		http://ll-plugins.nongnu.org/hacking.html
+URL:		https://ll-plugins.nongnu.org/hacking.html
 Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{version}.tar.bz2
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(gtkmm-2.4)
